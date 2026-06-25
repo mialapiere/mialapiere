@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mia Lapiere</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1C2333;
+    --ink-light: #4A5568;
+    --ink-muted: #8896AB;
+    --sage: #7A9E87;
+    --sage-light: #EFF4F1;
+    --cream: #F7F6F2;
+    --white: #ffffff;
+    --rule: #E2E8E4;
+    --serif: 'Outfit', system-ui, sans-serif;
+    --sans: 'Outfit', system-ui, sans-serif;
+    --max: 760px;
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(247, 246, 242, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+    z-index: 100;
+    padding: 0 2rem;
+  }
+
+  nav inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--max);
+    margin: 0 auto;
+    height: 54px;
+  }
+
+  .nav-name {
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--sage); }
+
+  /* PAGE */
+  main {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 2rem 6rem;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 9rem 0 5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.8125rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--ink-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-statement {
+    font-size: 1.0625rem;
+    color: var(--ink-light);
+    line-height: 1.75;
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--sans);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    padding: 0.6rem 1.2rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--white);
+    border: 1px solid var(--ink);
+  }
+
+  .btn-primary:hover { background: var(--sage); border-color: var(--sage); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink-light);
+    border: 1px solid var(--rule);
+  }
+
+  .btn-ghost:hover { border-color: var(--ink-muted); color: var(--ink); }
+
+  /* SECTION */
+  section {
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 2.5rem;
+  }
+
+  /* ABOUT / RESEARCH INTEREST */
+  .interest-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .interest-block h2 {
+    font-family: var(--sans);
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+  }
+
+  .interest-block p {
+    font-size: 0.9375rem;
+    color: var(--ink-light);
+    line-height: 1.75;
+  }
+
+  .interest-block p + p { margin-top: 0.75rem; }
+
+  /* PULL QUOTE */
+  .pull-quote {
+    border-left: 2px solid var(--sage);
+    padding: 0.25rem 0 0.25rem 1.5rem;
+    margin: 2.5rem 0 0;
+  }
+
+  .pull-quote p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  /* EXPERIENCE */
+  .exp-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 0 2.5rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .exp-item:first-of-type { border-top: none; padding-top: 0; }
+
+  .exp-meta { padding-top: 0.15rem; }
+
+  .exp-date {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--ink-muted);
+    line-height: 1.4;
+  }
+
+  .exp-location {
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    margin-top: 0.2rem;
+  }
+
+  .exp-tag {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sage);
+    background: var(--sage-light);
+    padding: 0.2rem 0.55rem;
+    border-radius: 1rem;
+  }
+
+  .exp-org {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--ink-muted);
+    margin-bottom: 0.25rem;
+  }
+
+  .exp-title {
+    font-family: var(--serif);
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+
+  .exp-body {
+    font-size: 0.875rem;
+    color: var(--ink-light);
+    line-height: 1.7;
+  }
+
+  .exp-body ul { list-style: none; padding: 0; }
+
+  .exp-body li {
+    padding-left: 1rem;
+    position: relative;
+    margin-bottom: 0.35rem;
+  }
+
+  .exp-body li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--sage);
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-group h3 {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .skill-tag {
+    font-size: 0.8125rem;
+    color: var(--ink);
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 0.3rem 0.7rem;
+    border-radius: 1rem;
+  }
+
+  /* EDUCATION */
+  .edu-item {
+    padding: 1.75rem 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .edu-item:first-of-type { border-top: none; padding-top: 0; }
+
+  .edu-school {
+    font-family: var(--serif);
+    font-size: 1.0625rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .edu-detail {
+    font-size: 0.875rem;
+    color: var(--ink-light);
+  }
+
+  .edu-gpa {
+    display: inline-block;
+    margin-top: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--sage);
+  }
+
+  /* CONTACT */
+  .contact-row {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .contact-item {
+    font-size: 0.9rem;
+    color: var(--ink-light);
+  }
+
+  .contact-item a {
+    color: var(--ink-light);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .contact-item a:hover { color: var(--sage); border-color: var(--sage); }
+
+  /* LANG dots */
+  .lang-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--ink-light);
+    margin-bottom: 0.4rem;
+  }
+
+  .lang-dots {
+    display: flex;
+    gap: 3px;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--rule);
+  }
+
+  .dot.filled { background: var(--sage); }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+  }
+
+  @media (max-width: 600px) {
+    .interest-block { grid-template-columns: 1fr; gap: 2rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.25rem; }
+    .exp-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <inner>
+    <span class="nav-name">Mia Lapiere</span>
+    <ul class="nav-links">
+      <li><a href="#research">Research</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </inner>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Mia Lapiere</h1>
+    <p class="hero-eyebrow">Stanford University · Symbolic Systems · 2027</p>
+    <p class="hero-statement">
+      Symbolic Systems student at Stanford, working at the intersection of cognitive science, language, and AI. Currently researching cognitive systems at the Menon Lab.
+    </p>
+    <div class="hero-links">
+      <a href="mailto:mlapiere@stanford.edu" class="btn btn-primary">Get in touch</a>
+      <a href="#experience" class="btn btn-ghost">View experience</a>
+    </div>
+  </div>
+
+  <!-- RESEARCH INTEREST -->
+  <section id="research">
+    <p class="section-label">Research interests</p>
+    <div class="interest-block">
+      <div>
+        <h2>Theoretical approaches to AI</h2>
+        <p>
+          Data-driven deep learning is computationally and socially costly. I'm interested in how insights from human cognition can inform more efficient, theoretically grounded models — not to replicate human intelligence, but to build AI that's cheaper and more useful.
+        </p>
+      </div>
+      <div>
+        <h2>Language &amp; cognition</h2>
+        <p>
+          How humans acquire and use language — and what that reveals about the structure of the mind. Speaker of five languages, currently studying cognitive systems at the Menon Lab and early language acquisition at the Stanford Language &amp; Cognition Lab.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="section-label">Experience</p>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">2025 – Present</div>
+        <div class="exp-location">Stanford, CA</div>
+        <div class="exp-tag">Research</div>
+      </div>
+      <div>
+        <div class="exp-org">Stanford Menon Lab</div>
+        <div class="exp-title">Research Assistant — Cognitive Systems &amp; Neuroscience</div>
+        <div class="exp-body">
+          <p>Investigating cognitive systems and neural mechanisms. Interested in how theoretical frameworks from neuroscience can inform computational models of learning and intelligence.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Dec 2025 – Present</div>
+        <div class="exp-location">Stanford, CA</div>
+        <div class="exp-tag">Research</div>
+      </div>
+      <div>
+        <div class="exp-org">Stanford Language &amp; Cognition Lab</div>
+        <div class="exp-title">Research Assistant</div>
+        <div class="exp-body">
+          <ul>
+            <li>Conduct developmental research on shape bias in early childhood and how shape influences object categorization</li>
+            <li>Build rapport with Stanford Bing Nursery School (3 days/week) and administer behavioral experiments</li>
+            <li>Record, analyze, and visualize experimental data to identify patterns in early language learning</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Feb 2026 – Present</div>
+        <div class="exp-location">Stanford, CA</div>
+        <div class="exp-tag">Engineering</div>
+      </div>
+      <div>
+        <div class="exp-org">LEVANTE — Learning Variability Network Exchange</div>
+        <div class="exp-title">Quality Assurance Tester</div>
+        <div class="exp-body">
+          <ul>
+            <li>Run UX testing for a large-scale developmental research platform collecting behavioral data from children aged 2–12</li>
+            <li>Work with Cypress and JSON-based scripts to systematically validate platform behavior</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Jun – Sep 2025</div>
+        <div class="exp-location">Chicago, IL</div>
+        <div class="exp-tag">Industry</div>
+      </div>
+      <div>
+        <div class="exp-org">Northwestern Memorial Hospital</div>
+        <div class="exp-title">Business Automation Intern</div>
+        <div class="exp-body">
+          <ul>
+            <li>Led end-to-end redesign of invoice processing workflows using Power Automate, VBA, and RPA — reducing processing time by 90%+</li>
+            <li>Partnered with finance, operations, and vendors to deploy automation supporting supply chain reliability and patient care</li>
+            <li>Developed in-house automation replacing third-party tools, generating $250K+ in annual cost savings</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Jun – Aug 2022</div>
+        <div class="exp-location">Evanston, IL</div>
+        <div class="exp-tag">Research</div>
+      </div>
+      <div>
+        <div class="exp-org">Rogers Research Group, Querrey-Simpson Institute for Bioelectronics</div>
+        <div class="exp-title">Research Intern</div>
+        <div class="exp-body">
+          <ul>
+            <li>Designed and prototyped encapsulation for a skin hydration sensor using FormLabs modeling software</li>
+            <li>Presented findings to 100+ researchers; co-published a research paper on sensor technology</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Aug 2022 – Jun 2023</div>
+        <div class="exp-location">Chicago, IL</div>
+        <div class="exp-tag">Research</div>
+      </div>
+      <div>
+        <div class="exp-org">Independent Study</div>
+        <div class="exp-title">Computer Science Researcher</div>
+        <div class="exp-body">
+          <ul>
+            <li>Conducted independent research using Python and NLTK on machine translation, genre analysis, and text-based modeling</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="section-label">Education</p>
+
+    <div class="edu-item">
+      <div class="edu-school">Stanford University</div>
+      <div class="edu-detail">B.S. Symbolic Systems · Minor in Chinese · Expected June 2027</div>
+      <div class="edu-detail" style="margin-top:0.3rem; color: var(--ink-muted); font-size:0.8125rem;">Relevant coursework: CS 103, CS 106B, CS 109, Stats 60, Psych 50, Psych 209</div>
+      <div class="edu-gpa">GPA 3.95</div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-school">Northwestern University</div>
+      <div class="edu-detail">Undergraduate coursework · Sep 2023 – Jun 2024</div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-school">Latin School of Chicago</div>
+      <div class="edu-detail">High School Diploma · 2023 · Departmental Foreign Language Award</div>
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+  <section>
+    <p class="section-label">Skills &amp; languages</p>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Technical</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">MATLAB</span>
+          <span class="skill-tag">Cypress</span>
+          <span class="skill-tag">Power Automate</span>
+          <span class="skill-tag">VBA</span>
+          <span class="skill-tag">NLTK</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Human languages</h3>
+        <div>
+          <div class="lang-item">English <div class="lang-dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span></div></div>
+          <div class="lang-item">Spanish <div class="lang-dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span></div> <span style="font-size:0.7rem;color:var(--ink-muted)">Fluent</span></div>
+          <div class="lang-item">French <div class="lang-dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span></div> <span style="font-size:0.7rem;color:var(--ink-muted)">Advanced</span></div>
+          <div class="lang-item">Mandarin <div class="lang-dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span></div> <span style="font-size:0.7rem;color:var(--ink-muted)">Advanced</span></div>
+          <div class="lang-item">Italian <div class="lang-dots"><span class="dot filled"></span><span class="dot filled"></span><span class="dot filled"></span><span class="dot"></span><span class="dot"></span></div> <span style="font-size:0.7rem;color:var(--ink-muted)">Conversational</span></div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Honors</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">U.S. Dept. of State Critical Language Scholarship — Chinese Semi-Finalist</span>
+          <span class="skill-tag">P&amp;G Standout Emerging Leaders</span>
+          <span class="skill-tag">Calcutta Tennis Tournament — 1st Place 2023</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">Contact</p>
+    <div class="contact-row">
+      <div class="contact-item">
+        <a href="mailto:mlapiere@stanford.edu">mlapiere@stanford.edu</a>
+      </div>
+      <div class="contact-item">
+        <a href="tel:3128690870">(312) 869-0870</a>
+      </div>
+      <div class="contact-item" style="color:var(--ink-muted)">Stanford, CA</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Mia Lapiere · Stanford University · 2027
+</footer>
+
+</body>
+</html>
